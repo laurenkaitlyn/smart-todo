@@ -21,4 +21,15 @@ router.get('/', (req, res) => {
     });
 });
 
+// //register new user
+// router.post('/register', (req, res) => {
+//   const user = req.body;
+
+//   userQueries.newUser(user)
+//     .then(user =>
+//       req.query.user_id = user.id,
+//       res.send(user))
+//     .catch(err => err.message)
+// })
+
 module.exports = router;
