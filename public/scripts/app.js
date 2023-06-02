@@ -10,12 +10,11 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('Task created successfully:', response);
-        // Perform any necessary UI updates
+        //
       },
       error: function(error) {
         // Handle error response
         console.error('Error creating task:', error);
-        // Perform any necessary error handling or UI updates
       }
     });
   }
@@ -27,12 +26,11 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('All tasks:', response);
-        // Perform any necessary UI updates to display the tasks
+        //
       },
       error: function(error) {
         // Handle error response
         console.error('Error fetching tasks:', error);
-        // Perform any necessary error handling or UI updates
       }
     });
   }
@@ -44,12 +42,11 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('Task details:', response);
-        // Perform any necessary UI updates to display the task details
+        //
       },
       error: function(error) {
         // Handle error response
         console.error('Error fetching task details:', error);
-        // Perform any necessary error handling or UI updates
       }
     });
   }
@@ -62,12 +59,11 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('Task updated successfully:', response);
-        // Perform any necessary UI updates or redirect to the updated task
+        //
       },
       error: function(error) {
         // Handle error response
         console.error('Error updating task:', error);
-        // Perform any necessary error handling or UI updates
       }
     });
   }
@@ -79,12 +75,11 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('Task deleted successfully:', response);
-        // Perform any necessary UI updates such as removing the task from the UI
+        //
       },
       error: function(error) {
         // Handle error response
         console.error('Error deleting task:', error);
-        // Perform any necessary error handling or UI updates
       }
     });
   }
