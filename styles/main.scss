@@ -107,3 +107,52 @@ td {
   border-collapse: collapse;
   padding: 22px;
 }
+
+label {
+  font-size: 20px;
+  cursor: pointer;
+}
+thead th {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #bcd2e8;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+tbody tr:hover {
+  background-color: #fff6 !important;
+}
+
+td input {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 7px 10px;
+  border-radius: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+tr:nth-child(4n) td input {
+  background-color: #86e49d;
+  color: #006b21;
+}
+
+tr:nth-child(4n-1) td input {
+  background-color: #ebc474;
+}
+
+tr:nth-child(4n+1) td input {
+  background-color: #d893a3;
+  color: #b30021;
+}
+
+tr:nth-child(4n+2) td input {
+  background-color: #6fcaea;
+}
