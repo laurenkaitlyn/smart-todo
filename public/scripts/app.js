@@ -2,25 +2,91 @@
 
 $(document).ready(function() {
   // AJAX functions for CRUD operations
-
   function createTask(task) {
-    // AJAX request for creating a task
+    $.ajax({
+      url: '/api/notes',
+      method: 'POST',
+      data: { task: task },
+      success: function(response) {
+        // Handle success response
+        console.log('Task created successfully:', response);
+        // Perform any necessary UI updates
+      },
+      error: function(error) {
+        // Handle error response
+        console.error('Error creating task:', error);
+        // Perform any necessary error handling or UI updates
+      }
+    });
   }
 
   function getAllTasks() {
-    // AJAX request for fetching all tasks
+    $.ajax({
+      url: '/api/notes',
+      method: 'GET',
+      success: function(response) {
+        // Handle success response
+        console.log('All tasks:', response);
+        // Perform any necessary UI updates to display the tasks
+      },
+      error: function(error) {
+        // Handle error response
+        console.error('Error fetching tasks:', error);
+        // Perform any necessary error handling or UI updates
+      }
+    });
   }
 
   function getTaskById(taskId) {
-    // AJAX request for fetching a task by ID
+    $.ajax({
+      url: '/api/notes/' + taskId,
+      method: 'GET',
+      success: function(response) {
+        // Handle success response
+        console.log('Task details:', response);
+        // Perform any necessary UI updates to display the task details
+      },
+      error: function(error) {
+        // Handle error response
+        console.error('Error fetching task details:', error);
+        // Perform any necessary error handling or UI updates
+      }
+    });
   }
 
   function updateTask(taskId, updatedTask) {
-    // AJAX request for updating a task
+    $.ajax({
+      url: '/api/notes/' + taskId + '/edit',
+      method: 'POST',
+      data: { task: updatedTask },
+      success: function(response) {
+        // Handle success response
+        console.log('Task updated successfully:', response);
+        // Perform any necessary UI updates or redirect to the updated task
+      },
+      error: function(error) {
+        // Handle error response
+        console.error('Error updating task:', error);
+        // Perform any necessary error handling or UI updates
+      }
+    });
   }
 
   function deleteTask(taskId) {
-    // AJAX request for deleting a task
+    $.ajax({
+      url: '/api/notes/' + taskId + '/delete',
+      method: 'POST',
+      success: function(response) {
+        // Handle success response
+        console.log('Task deleted successfully:', response);
+        // Perform any necessary UI updates such as removing the task from the UI
+      },
+      error: function(error) {
+        // Handle error response
+        console.error('Error deleting task:', error);
+        // Perform any necessary error handling or UI updates
+      }
+    });
   }
 
   // Submit button click event handler
