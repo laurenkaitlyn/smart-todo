@@ -57,8 +57,23 @@ $(document).ready(function () {
     });
   });
 
+  if (username) {
+    // Update the header to display "Logged in as: username"
+    $('#login-link').hide();
+    $('#register-link').hide();
+    $('#logout-link').show().html('<a href="#">Logout</a>');
+    $('<li id="user-link">Logged in as: ' + username + '</li>').insertAfter('#logout-link');
+  } else {
+    // User is not logged in, display the "Login" and "Register" buttons
+    $('#login-link').show();
+    $('#register-link').show();
+    $('#logout-link').hide();
+    $('#user-link').remove();
+  }
+
   // Logout button click event
-  $('#logout-button').click(function () {
+  $('#logout-link a').click(function (e) {
+    e.preventDefault();
     // Send the AJAX request to log out the user
     $.ajax({
       method: 'POST',
