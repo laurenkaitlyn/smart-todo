@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
 });
 
 //Update - post
-router.put('/:user_id/edit', (req, res) => {
+router.put('/:id/edit', (req, res) => {
   const userId = req.query.user_id;
   const category = req.body.category;
   const content = req.body.content;
