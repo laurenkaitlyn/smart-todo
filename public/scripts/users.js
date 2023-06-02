@@ -1,6 +1,9 @@
 // Client facing scripts here
 
 $(document).ready(function () {
+
+  let username = null;
+
   // Register button click event
   $('#register-button').click(function () {
     // Retrieve user input values
@@ -47,6 +50,7 @@ $(document).ready(function () {
       url: '/api/auth/login',
       data: user,
       success: function (response) {
+        username = response.email;
         // Handle successful login
         console.log('User logged in:', response);
       },

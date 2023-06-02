@@ -1,9 +1,16 @@
 // Client facing scripts here
 
 $(document).ready(function() {
+  let selectedCategory = 0;
+  $(".category-list-item").click(function() {
+    selectedCategory = $(this).attr("data-id");
+    console.log(selectedCategory);
+    $("body").css("background-image", `url(/images/${selectedCategory}.jpg)`)
+  });
+
   // AJAX functions for CRUD operations
   function createTask(task) {
-    $.ajax({
+    return $.ajax({
       url: '/api/notes',
       method: 'POST',
       data: { task: task },
@@ -87,29 +94,30 @@ $(document).ready(function() {
   // Submit button click event handler
   $('#submit-button').click(function() {
     let task = $('#input-box').val();
-    createTask(task);
+    createTask(task)
+    .then(() => {
+      if (task.trim() === '') {
+        alert("The input is empty, please type something.");
+      } else {
+        let newRow = $('<tr>');
 
-    if (task.trim() === '') {
-      alert("The input is empty, please type something.");
-    } else {
-      let newRow = $('<tr>');
+        // Add task cell with checkbox
+        let taskCell = $('<td class="task-cell">');
+        taskCell.append('<input type="checkbox">');
+        taskCell.append(' ');
+        taskCell.append('<label class="task-text">' + task + '</label>');
+        newRow.append(taskCell);
 
-      // Add task cell with checkbox
-      let taskCell = $('<td class="task-cell">');
-      taskCell.append('<input type="checkbox">');
-      taskCell.append(' ');
-      taskCell.append('<label class="task-text">' + task + '</label>');
-      newRow.append(taskCell);
+        // Add edit button cell
+        newRow.append('<td><button class="edit-button">Edit</button></td>');
 
-      // Add edit button cell
-      newRow.append('<td><button class="edit-button">Edit</button></td>');
+        // Add delete button cell
+        newRow.append('<td><button class="delete-button">Delete</button></td>');
 
-      // Add delete button cell
-      newRow.append('<td><button class="delete-button">Delete</button></td>');
-
-      $('#list-table').append(newRow);
-      $('#input-box').val('');
-    }
+        $('#list-table').append(newRow);
+        $('#input-box').val('');
+      }
+    })
   });
 
   // Fetch all tasks on page load
@@ -127,7 +135,7 @@ $(document).ready(function() {
     getTaskById(taskId)
       .done(function(task) {
         // Redirect to the edit route with the task ID or other relevant identifier
-        window.location.href = '/api/notes/' + taskId + '/edit';
+        window.location.href = '/notes/' + taskId;
       })
       .fail(function(error) {
         console.error('Error retrieving task:', error);
