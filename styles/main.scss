@@ -35,6 +35,7 @@ main.table {
 
 h1{
   flex: 2;
+  font-size: 28px;
 }
 
 .header .input-group {
@@ -106,6 +107,7 @@ th {
 td {
   border-collapse: collapse;
   padding: 22px;
+  cursor: pointer;
 }
 
 label {
@@ -118,9 +120,16 @@ thead th {
   left: 0;
   background-color: #bcd2e8;
   font-size: 20px;
+}
+
+.task-checkbox{
   cursor: pointer;
 }
 
+.crossed {
+  text-decoration: line-through;
+  color: gray;
+}
 
 tbody tr:nth-child(even) {
   background-color: #0000000b;
@@ -130,7 +139,7 @@ tbody tr:hover {
   background-color: #fff6 !important;
 }
 
-td input {
+td button {
   font-size: 14px;
   font-weight: bold;
   padding: 7px 10px;
@@ -139,20 +148,20 @@ td input {
   cursor: pointer;
 }
 
-tr:nth-child(4n) td input {
+tr:nth-child(4n) td button {
   background-color: #86e49d;
   color: #006b21;
 }
 
-tr:nth-child(4n-1) td input {
+tr:nth-child(4n-1) td button {
   background-color: #ebc474;
 }
 
-tr:nth-child(4n+1) td input {
+tr:nth-child(4n+1) td button {
   background-color: #d893a3;
   color: #b30021;
 }
 
-tr:nth-child(4n+2) td input {
+tr:nth-child(4n+2) td button {
   background-color: #6fcaea;
 }
