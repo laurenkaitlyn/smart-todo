@@ -43,7 +43,8 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
   const { name } = req.body;
   if (!name) {
-    return res.status(403).render('error', { message: 'Provide name property to login!' });
+    return res.status(400).send('provide name to loh')
+   // return res.status(403).render('error', { message: 'Provide name property to login!' });
   }
 
   userQueries.login(name)
@@ -54,7 +55,7 @@ router.post('/login', (req, res) => {
       }
 
       req.session.user_id = user.id;
-      res.redirect('/notes');
+      res.send(user);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });

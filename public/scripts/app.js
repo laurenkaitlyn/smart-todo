@@ -19,8 +19,8 @@ $(document).ready(function() {
     } else {
       // Hide tasks that don't belong to the selected category
       $('#list-table tr').each(function() {
-        let taskCategory = $(this).data('task-category');
-        if (taskCategory != categoryId) {
+        let taskCategory = $(this).attr('data-id');
+        if (taskCategory !== categoryId) {
           $(this).hide();
         } else {
           $(this).show();
@@ -34,16 +34,16 @@ $(document).ready(function() {
     return $.ajax({
       url: '/api/notes',
       method: 'POST',
-      data: { task: task },
-      success: function(response) {
-        // Handle success response
-        console.log('Task created successfully:', response);
-      },
-      error: function(error) {
-        // Handle error response
-        console.error('Error creating task:', error);
-      }
-    });
+      data: { content: task }})
+      // success: function(response) {
+      //   // Handle success response
+      //   console.log('Task created successfully:', response);
+      // },
+      // error: function(error) {
+      //   // Handle error response
+      //   console.error('Error creating task:', error);
+      // }
+  //  });
   }
 
   function getAllTasks() {
@@ -53,6 +53,26 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('All tasks:', response);
+
+        for (const task of response.notes) {
+          let newRow = $(`<tr class= "category-row-item" data-id= ${task.category_id}>`);
+
+            // Add task cell with checkbox
+            let taskCell = $('<td class="task-cell">');
+            taskCell.append('<input type="checkbox">');
+            taskCell.append(' ');
+            taskCell.append('<label class="task-text">' + task.content + '</label>');
+            newRow.append(taskCell);
+
+            // Add edit button cell
+            newRow.append('<td><button class="edit-button">Edit</button></td>');
+
+            // Add delete button cell
+            newRow.append('<td><button class="delete-button">Delete</button></td>');
+
+            $('#list-table').append(newRow);
+
+        }
       },
       error: function(error) {
         // Handle error response
@@ -109,9 +129,10 @@ $(document).ready(function() {
 
   // Submit button click event handler
   $('#submit-button').click(function() {
+
     let task = $('#input-box').val();
     createTask(task)
-    .then(() => {
+    .then((response) => {
       if (task.trim() === '') {
         alert("The input is empty, please type something.");
       } else {

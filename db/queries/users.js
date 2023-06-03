@@ -27,10 +27,11 @@ const register = (newUser) => {
 //login user
 const login = (user) => {
   const query = 'SELECT * FROM users WHERE name = $1;';
-  const values = [user.name, user.email, user.passsword]
+  const values = [user]
+  console.log(values);
   return db
     .query(query, values)
     .then((data) => data.rows[0]);
 }
 
-module.exports = { getUsers, register };
+module.exports = { login, register };
