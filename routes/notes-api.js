@@ -16,8 +16,8 @@ router.post('/', (req,res) => {
   const userId = req.query.user_id;
   const content = req.body.content;
 
-  sort.simpleCheck(content)
-  .then(res => notesQueries.newUserNote(userId, content, res))
+  const categoryId = sort.simpleCheck(content)
+  notesQueries.newUserNote(userId, content, categoryId)
   .then(note => {
     res.json({ note });
   })
@@ -28,13 +28,13 @@ router.post('/', (req,res) => {
 
 //Read All by user_id
 router.get('/', (req, res) => {
-  const userId = req.query.user_id;
-  if (!userId) {
-    res.status(401).send('🚫Unauthorized Request. Please Login🚫');
-    return;
-  }
+  // const userId = req.query.user_id;
+  // if (!userId) {
+  //   res.status(401).send('🚫Unauthorized Request. Please Login🚫');
+  //   return;
+  // }
 
-  notesQueries.getAllByUserId(userId)
+  notesQueries.getAllByUserId(1)
     .then(notes => {
       res.json({ notes });
     })

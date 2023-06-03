@@ -33,13 +33,15 @@ $(document).ready(function () {
   });
 
   // Login button click event
-  $('#login-button').click(function () {
+  $('#login-button').click(function (e) {
+    e.preventDefault();
     // Retrieve user input values
     const email = $('#email-input').val();
     const password = $('#password-input').val();
 
     // Create the user object
     const user = {
+      name: 'Lauren',
       email: email,
       password: password
     };
@@ -47,12 +49,14 @@ $(document).ready(function () {
     // Send the AJAX request to log in the user
     $.ajax({
       method: 'POST',
-      url: '/api/auth/login',
+      url: '/users/login',
       data: user,
       success: function (response) {
         username = response.email;
         // Handle successful login
+
         console.log('User logged in:', response);
+        window.location.href = '/';
       },
       error: function (error) {
         // Handle login error
