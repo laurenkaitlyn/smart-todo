@@ -1,18 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
 body {
+  min-height: 100vh;
+  background: url(/images/1.jpg) center / cover;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main.table {
+  width: 77vw;
+  height: 80vh;
+  background-color: #fff5;
+  box-shadow: 0 8px 16px #0005;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+}
+
+h1{
+  flex: 2;
+  font-size: 28px;
+}
+
+.header .input-group {
+  width: 35%;
+  height: 50%;
+  background-color: #fff5;
+  padding: 0 20px;
+  border-radius: 10px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  transition: .2s;
+}
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+.header .input-group:hover {
+  width: 45%;
+  background-color: #fff8;
+  box-shadow: 0 5px 40px #0002;
+}
+
+.header .input-group input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+#submit-button {
+  width: 100%;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 30px;
+  border: 0;
+  background-color: #EB7A77;
+  border-radius: 25px;
+  line-height: 1;
+  flex: 2;
+  cursor: pointer;
+}
+
+.shell {
+  width: 95%;
+  max-height: calc(90% - 25px);
+  background-color: #fffb;
+  margin: 8px auto;
+  border-radius: 10px;
+  overflow: auto;
+  overflow: overlay;
+}
+
+.shell::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+table,
+th {
+  border-collapse: collapse;
+  padding: 20px;
+  text-align: center;
+}
+
+td {
+  border-collapse: collapse;
+  padding: 22px;
+  cursor: pointer;
+}
+
+label {
+  font-size: 20px;
+  cursor: pointer;
+}
+thead th {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #bcd2e8;
+  font-size: 20px;
+}
+
+.task-checkbox{
+  cursor: pointer;
+}
+
+.crossed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+tbody tr:hover {
+  background-color: #fff6 !important;
+}
+
+td button {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 7px 10px;
+  border-radius: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+tr:nth-child(4n) td button {
+  background-color: #86e49d;
+  color: #006b21;
+}
+
+tr:nth-child(4n-1) td button {
+  background-color: #ebc474;
+}
+
+tr:nth-child(4n+1) td button {
+  background-color: #d893a3;
+  color: #b30021;
+}
+
+tr:nth-child(4n+2) td button {
+  background-color: #6fcaea;
 }
