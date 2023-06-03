@@ -9,7 +9,8 @@ const getUsers = () => {
   .catch(err => err.message);
 };
 
-//add new user
+//add new
+//in users view page we are using only email and password, name is not part, we removed or change the view
 const register = (newUser) => {
   const query = `INSERT INTO users (name, email, password)
   VALUES ($1, $2, $3)

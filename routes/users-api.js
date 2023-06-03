@@ -9,33 +9,16 @@ const express = require('express');
 const router  = express.Router();
 const userQueries = require('../db/queries/users');
 
-// router.get('/', (req, res) => {
-//   userQueries.getUsers()
-//     .then(users => {
-//       res.json({ users });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
-
-//login get page
-router.get('/login', (req, res) => {
-  console.log("this is a text");
-  res.render('users');
+router.get('/', (req, res) => {
+  userQueries.getUsers()
+    .then(users => {
+      res.json({ users });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
-
-// //register new user
-// router.post('/register', (req, res) => {
-//   const user = req.body;
-
-//   userQueries.newUser(user)
-//     .then(user =>
-//       req.query.user_id = user.id,
-//       res.send(user))
-//     .catch(err => err.message)
-// })
 
 module.exports = router;
