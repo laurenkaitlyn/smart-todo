@@ -11,19 +11,19 @@ const userQueries = require('../db/queries/users');
 
 
 //register get page
-router.get('/', (req, res) => {
+router.get('/register', (req, res) => {
   res.render('users');
 });
 
 
 // register post page
 router.post('/register', (req, res) => {
-  const { name } = req.body;
+  const { newUser } = req.body;
   if (!name) {
     return res.status(403).render('error', { message: 'Provide name to register!' });
   }
 
-  const newUser = { name };
+  //const newUser = { name };
   userQueries.register(newUser)
     .then(() => {
       res.redirect('/login');
@@ -35,8 +35,8 @@ router.post('/register', (req, res) => {
 
 //login get page
 router.get('/login', (req, res) => {
-  console.log("this is a text");
-  res.render('users');
+
+  res.render("/users");
 });
 
 //login post page
@@ -64,7 +64,7 @@ router.post('/login', (req, res) => {
 //logout page
 router.post("/logout", (req,res) => {
   req.session = null;
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 module.exports = router;
