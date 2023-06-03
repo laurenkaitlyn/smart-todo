@@ -10,6 +10,9 @@ $(document).ready(function() {
 
     // Filter tasks based on the selected category
     filterTasks(selectedCategory);
+
+    // Update table header title with the specific category
+    updateTableHeaderTitle(selectedCategory);
   });
 
   function filterTasks(categoryId) {
@@ -27,6 +30,35 @@ $(document).ready(function() {
         }
       });
     }
+  }
+
+  function updateTableHeaderTitle(categoryId) {
+    let categoryTitle = '';
+
+    // Set the category title based on the selected category
+    switch (categoryId) {
+      case "0":
+        categoryTitle = 'All';
+        break;
+      case "1":
+        categoryTitle = 'Buy';
+        break;
+      case "2":
+        categoryTitle = 'Read';
+        break;
+      case "3":
+        categoryTitle = 'Watch';
+        break;
+      case "4":
+        categoryTitle = 'Eat';
+        break;
+      case "5":
+        categoryTitle = 'Other';
+        break;
+    }
+
+    // Update the table header title
+    $('h1').text(`TODO List - ${categoryTitle}`);
   }
 
   // AJAX functions for CRUD operations
