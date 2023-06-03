@@ -2,11 +2,32 @@
 
 $(document).ready(function() {
   let selectedCategory = 0;
+
   $(".category-list-item").click(function() {
     selectedCategory = $(this).attr("data-id");
     console.log(selectedCategory);
     $("body").css("background-image", `url(/images/${selectedCategory}.jpg)`)
+
+    // Filter tasks based on the selected category
+    filterTasks(selectedCategory);
   });
+
+  function filterTasks(categoryId) {
+    // Show all tasks if the selected category is 'All'
+    if (categoryId === "0") {
+      $('#list-table tr').show();
+    } else {
+      // Hide tasks that don't belong to the selected category
+      $('#list-table tr').each(function() {
+        let taskCategory = $(this).data('task-category');
+        if (taskCategory != categoryId) {
+          $(this).hide();
+        } else {
+          $(this).show();
+        }
+      });
+    }
+  }
 
   // AJAX functions for CRUD operations
   function createTask(task) {
