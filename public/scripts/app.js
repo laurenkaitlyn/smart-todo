@@ -17,7 +17,6 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('Task created successfully:', response);
-        //
       },
       error: function(error) {
         // Handle error response
@@ -33,7 +32,6 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('All tasks:', response);
-        //
       },
       error: function(error) {
         // Handle error response
@@ -49,7 +47,6 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('Task details:', response);
-        //
       },
       error: function(error) {
         // Handle error response
@@ -58,22 +55,21 @@ $(document).ready(function() {
     });
   }
 
-  function updateTask(taskId, updatedTask) {
-    $.ajax({
-      url: '/api/notes/' + taskId + '/edit',
-      method: 'POST',
-      data: { task: updatedTask },
-      success: function(response) {
-        // Handle success response
-        console.log('Task updated successfully:', response);
-        //
-      },
-      error: function(error) {
-        // Handle error response
-        console.error('Error updating task:', error);
-      }
-    });
-  }
+  // function updateTask(taskId, updatedTask) {
+  //   $.ajax({
+  //     url: '/api/notes/' + taskId + '/edit',
+  //     method: 'POST',
+  //     data: { task: updatedTask },
+  //     success: function(response) {
+  //       // Handle success response
+  //       console.log('Task updated successfully:', response);
+  //     },
+  //     error: function(error) {
+  //       // Handle error response
+  //       console.error('Error updating task:', error);
+  //     }
+  //   });
+  // }
 
   function deleteTask(taskId) {
     $.ajax({
@@ -82,7 +78,6 @@ $(document).ready(function() {
       success: function(response) {
         // Handle success response
         console.log('Task deleted successfully:', response);
-        //
       },
       error: function(error) {
         // Handle error response
@@ -128,13 +123,13 @@ $(document).ready(function() {
     // Get the parent row (tr) of the clicked edit button
     let row = $(this).closest('tr');
 
-    // Get the task ID from the row's data attribute or other relevant identifier
+    // Get the task ID from the row's data attribute
     let taskId = row.data('task-id');
 
     // Retrieve task data from the server using the task ID
     getTaskById(taskId)
       .done(function(task) {
-        // Redirect to the edit route with the task ID or other relevant identifier
+        // Redirect to the edit route with the task ID
         window.location.href = '/notes/' + taskId;
       })
       .fail(function(error) {
@@ -175,6 +170,4 @@ $(document).ready(function() {
       }
     }
   });
-
-
 });
