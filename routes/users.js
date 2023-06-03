@@ -35,6 +35,7 @@ router.post('/register', (req, res) => {
 
 //login get page
 router.get('/login', (req, res) => {
+  console.log("this is a text");
   res.render('users');
 });
 

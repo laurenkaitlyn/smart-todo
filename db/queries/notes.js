@@ -101,4 +101,4 @@ const deleteNote = function(userId, noteId) {
 
 
 
-module.exports = { getAllByUserId, getUserNotesByCategory, newUserNote, updateNotes, deleteNote }
+module.exports = { getAllByUserId, newUserNote, updateNotes, deleteNote }
