@@ -15,11 +15,15 @@ router.get('/register', (req, res) => {
   res.render('users');
 });
 
+//login get page
+router.get('/login', (req, res) => {
+  res.render("users");
+});
 
 // register post page
 router.post('/register', (req, res) => {
   const { newUser } = req.body;
-  if (!name) {
+  if (!newUser) {
     return res.status(403).render('error', { message: 'Provide name to register!' });
   }
 
@@ -33,11 +37,7 @@ router.post('/register', (req, res) => {
     });
 });
 
-//login get page
-router.get('/login', (req, res) => {
 
-  res.render("/users");
-});
 
 //login post page
 router.post('/login', (req, res) => {
